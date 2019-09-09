@@ -14,6 +14,7 @@
   $END$
   <%
     out.print(1);
+    System.out.println();
   %>
   </body>
 </html>
