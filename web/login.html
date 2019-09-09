@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>login</title>
+	<style>
+		div{width:200px; height: 200px; border: 1px solid red;}
+	</style>
+	
+	<script type="text/javascript">
+		function calc(){
+			//1.获取第一个文本框元素
+			var inputEle = document.getElementById("text1");
+			var t1v = inputEle.value;
+			var t2v = document.getElementById("text2").value;
+			//2.获取运算符
+			var oper = document.getElementById("oper").value;
+			var divEle = document.getElementById("div1");
+			//3.判断进行操作分支结构
+			if((t1v==null|| t1v=="")&&(t2v==null|| t2v=="")){
+				divEle.innerHTML="请输入合法数据";
+			}else if(isNaN(t1v)|| isNaN(t2v)){
+				divEle.innerHTML="请输入数值型";
+			}else{
+				switch(oper){
+					case "+":
+						divEle.innerHTML=parseInt(t1v)+parseInt(t2v);
+						break;
+					case "-":
+						divEle.innerHTML=parseInt(t1v)-parseInt(t2v);
+						break;
+					case "x":
+						divEle.innerHTML=parseInt(t1v)*parseInt(t2v);
+						break;
+					case "/":
+						if(t2v==0){
+							divEle.innerHTML="除数不能为0";
+						}else{
+							divEle.innerHTML=parseInt(t1v)/parseInt(t2v);
+						}
+						break;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="http://localhost:8888/login" method="get">
+		<p>用户名：<input type="text" name="username" id="username" /></p>
+		<p>密码：<input type="password" name="pwd" id="pwd"  /></p>
+		<p>
+			爱好：<input type="checkbox" name="hobby" value="ball" />足球
+				<input type="checkbox" name="hobby" value="read" />读书
+				<input type="checkbox" name="hobby" value="paint" />画画
+		</p>
+		<p><input type="submit" value="登录" /></p>
+	</form>
+	
+	<h1>计算器</h1>
+	<p>操作数1：<input type="text" id="text1" value="" /></p>
+	<p>操作数2：<input type="text" id="text2" value="" /></p>
+	<p>运算符：
+		<select name="" id="oper">
+			<option value="+" check>+</option>
+			<option value="-">-</option>
+			<option value="x">x</option>
+			<option value="/">/</option>
+		</select>
+	</p>
+	<p><input type="button" id="" value="计算" onclick="calc()" /></p>
+	<div id="div1"></div>
+</body>
+</html>
